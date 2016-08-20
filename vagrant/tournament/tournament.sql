@@ -6,4 +6,18 @@
 -- You can write comments in this file by starting them with two dashes, like
 -- these lines here.
 
+--matches table
+create table matches(
+  id serial primary key,
+  winner_id integer,
+  loser_id integer
+);
 
+--player table
+create table players(
+  id serial primary key,
+  wins smallint DEFAULT 0,
+  loses smallint DEFAULT 0,
+  matches integer DEFAULT 0,
+  name text
+);
