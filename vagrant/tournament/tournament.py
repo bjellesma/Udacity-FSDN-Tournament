@@ -111,6 +111,7 @@ def swissPairings():
     rows = playerStandings()
     swissPairingsList = []
     #iterate over every two elements in list
+    #swissPairingsList is a list of tuples with the players playing in the next round
     # https://stackoverflow.com/questions/5389507/iterating-over-every-two-elements-in-a-list/5389578#5389578
     for x,y in zip(rows[0::2], rows[1::2]):
         pair = (x[0], x[1], y[0], y[1])
