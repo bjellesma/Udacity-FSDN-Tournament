@@ -9,8 +9,8 @@
 --matches table
 create table matches(
   id serial primary key,
-  winner_id integer,
-  loser_id integer
+  winner_id integer REFERENCES players(id),
+  loser_id integer REFERENCES players(id)
 );
 
 --player table

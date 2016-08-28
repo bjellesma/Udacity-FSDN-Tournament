@@ -23,6 +23,7 @@
 * In psql interactive mode: `create database tournament`
 * In psql interactive mode: `\c tournament`. This connects you to the database
 * In psql interactive mode: `\i tournament.sql`. This imports the sql file.
+* Finally, to run the file: `python tournament.py`
 
 <a name="Author"><h1>Author</h1></a>
   <p>This project was authored by William Jellesma. </p>
