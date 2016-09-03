@@ -21,8 +21,6 @@ def deleteMatches():
     """Remove all the match records from the database."""
     db, cursor = connect()
     cursor.execute("DELETE FROM matches;")
-    #update player matches to zero
-    cursor.execute("UPDATE players SET matches = 0, wins = 0, loses = 0;")
     db.commit()
     db.close()
 
@@ -73,7 +71,7 @@ def playerStandings():
         matches: the number of matches the player has played
     """
     db, cursor = connect()
-    cursor.execute("SELECT id, name, wins, matches FROM players ORDER BY wins DESC;")
+    cursor.execute("SELECT players.id, players.name, wincounter.wins, matchescounter.matches FROM players Inner JOIN wincounter on wincounter.id = players.id Inner Join matchescounter on matchescounter.id = players.id ORDER BY wins DESC;")
     return cursor.fetchall()
     db.close()
 
@@ -88,9 +86,6 @@ def reportMatch(winner, loser):
     db, cursor = connect()
     #you need to use %s even when passing a number
     cursor.execute("INSERT INTO matches (winner_id, loser_id) VALUES (%s, %s);", (winner, loser,))
-    #update winner and loser
-    cursor.execute("UPDATE players SET matches = matches + 1, wins = wins + 1 WHERE id = (%s);", (winner,))
-    cursor.execute("UPDATE players SET matches = matches + 1, loses = loses + 1 WHERE id = (%s);", (loser,))
     db.commit()
     db.close()
 

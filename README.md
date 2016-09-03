@@ -20,7 +20,7 @@
 * `vagrant ssh`
 * Once you are ssh'd into the VM, navigate to the tournament directory with `cd /vagrant`
 * create the PostgreSQL database from file. `psql -f tournament.sql`
-* Finally, to run the file: `python tournament.py`
+* Finally, to run the file: `python tournament_test.py`
 
 <a name="Author"><h1>Author</h1></a>
   <p>This project was authored by William Jellesma. </p>
