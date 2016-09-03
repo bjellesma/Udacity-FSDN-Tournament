@@ -20,24 +20,24 @@ def connect(database_name="tournament"):
 def deleteMatches():
     """Remove all the match records from the database."""
     db, cursor = connect()
-    c.execute("DELETE FROM matches;")
+    cursor.execute("DELETE FROM matches;")
     #update player matches to zero
-    c.execute("UPDATE players SET matches = 0, wins = 0, loses = 0;")
+    cursor.execute("UPDATE players SET matches = 0, wins = 0, loses = 0;")
     db.commit()
     db.close()
 
 def deletePlayers():
     """Remove all the player records from the database."""
     db, cursor = connect()
-    c.execute("DELETE FROM players;")
+    cursor.execute("DELETE FROM players;")
     db.commit()
     db.close()
 
 def countPlayers():
     """Returns the number of players currently registered."""
     db, cursor = connect()
-    c.execute("SELECT count(*) FROM players;")
-    results = c.fetchone()
+    cursor.execute("SELECT count(*) FROM players;")
+    results = cursor.fetchone()
     #if rows are empty (nonetype)
     if results is None:
         return 0
@@ -74,7 +74,7 @@ def playerStandings():
     """
     db, cursor = connect()
     cursor.execute("SELECT id, name, wins, matches FROM players ORDER BY wins DESC;")
-    return c.fetchall()
+    return cursor.fetchall()
     db.close()
 
 
