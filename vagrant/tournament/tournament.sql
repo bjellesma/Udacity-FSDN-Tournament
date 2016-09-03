@@ -7,6 +7,7 @@
 -- these lines here.
 
 --create a new tournament database
+--saves a lot of time in development because the database is always reinstanuated
 DROP DATABASE IF EXISTS tournament;
 CREATE DATABASE tournament;
 \c tournament;
